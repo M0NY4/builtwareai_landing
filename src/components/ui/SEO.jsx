@@ -1,0 +1,106 @@
+import { Helmet } from 'react-helmet-async';
+
+const SEO = ({ 
+  title = "BuiltwareAI | Premium SaaS & Enterprise Software Solutions", 
+  description = "BuiltwareAI is a leading software agency specializing in premium SaaS development, custom ERP systems, and AI-powered business automation for modern industries.",
+  keywords = "BuiltwareAI, SaaS development, ERP solutions, AI automation, enterprise software, industrial software, custom HRMS, RMC software",
+  image = "/og-image.png", // Ensure this exists in public/
+  url = "https://builtwareai.com", // Replace with actual domain
+  type = "website"
+}) => {
+  const siteName = "BuiltwareAI";
+  const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
+
+  return (
+    <Helmet>
+      {/* Basic Meta Tags */}
+      <title>{fullTitle}</title>
+      <meta name="description" content={description} />
+      <meta name="keywords" content={keywords} />
+      <link rel="canonical" href={url} />
+      <meta name="robots" content="index, follow" />
+
+      {/* Open Graph / Facebook */}
+      <meta property="og:type" content={type} />
+      <meta property="og:url" content={url} />
+      <meta property="og:title" content={fullTitle} />
+      <meta property="og:description" content={description} />
+      <meta property="og:image" content={image} />
+      <meta property="og:site_name" content={siteName} />
+
+      {/* Twitter */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:url" content={url} />
+      <meta name="twitter:title" content={fullTitle} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={image} />
+
+      {/* Structured Data: Breadcrumb */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": url
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Services",
+              "item": `${url}/#services`
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Solutions",
+              "item": `${url}/#solutions`
+            }
+          ]
+        })}
+      </script>
+
+      {/* Structured Data: Organization */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "BuiltwareAI",
+          "url": url,
+          "logo": `${url}/logo.png`,
+          "sameAs": [
+            "https://www.linkedin.com/company/builtwareai",
+            "https://github.com/builtwareai"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+1-123-456-7890",
+            "contactType": "customer service",
+            "areaServed": "Global",
+            "availableLanguage": ["English"]
+          }
+        })}
+      </script>
+
+      {/* Structured Data: WebSite */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "BuiltwareAI",
+          "url": url,
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": `${url}/#search?q={search_term_string}`,
+            "query-input": "required name=search_term_string"
+          }
+        })}
+      </script>
+    </Helmet>
+  );
+};
+
+export default SEO;

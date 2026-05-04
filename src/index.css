@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gold: #D4AF37;
+  --color-gold-light: #F5D76E;
+  --color-gold-dark: #B8860B;
+  --color-gold-glass: rgba(212, 175, 55, 0.1);
+
+  --color-dark-bg: #0D0D0D;
+  --color-dark-surface: #1A1A1A;
+  --color-dark-text: #FFFFFF;
+  --color-dark-text-secondary: #B3B3B3;
+  --color-dark-border: rgba(212, 175, 55, 0.1);
+
+  --color-light-bg: #F5F5F5;
+  --color-light-surface: #FFFFFF;
+  --color-light-text: #0D0D0D;
+  --color-light-text-secondary: #666666;
+  --color-light-border: rgba(0, 0, 0, 0.05);
+
+  --font-outfit: 'Outfit', sans-serif;
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-outfit);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  body.dark {
+    background-color: var(--color-dark-bg);
+    color: var(--color-dark-text);
+  }
+
+  body.light {
+    background-color: var(--color-light-bg);
+    color: var(--color-light-text);
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #1A1A1A;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-gold);
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background-color: rgba(212, 175, 55, 0.3);
+    color: #FFFFFF;
+  }
+}
+
+@layer utilities {
+  .gpu {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    will-change: transform;
+  }
+  
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .backdrop-blur-fix {
+    /* Prevents flickering on some browsers when using backdrop-blur */
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+}
+
+/* Global optimization for sections */
+section {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 500px;
+}
+

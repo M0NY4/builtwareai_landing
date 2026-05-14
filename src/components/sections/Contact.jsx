@@ -40,8 +40,6 @@ const Contact = () => {
     setEmailError(null);
     setIsSending(true);
 
-    const waNumber = "919730016522";
-
     // 1. Send Background Email via EmailJS
     // Include both naming conventions so the template works regardless of setup
     const templateParams = {
@@ -63,7 +61,7 @@ const Contact = () => {
         second: "2-digit",
         timeZoneName: "short",
       }),
-      to_email: "admin@builtwareai.info, heyperson07@gmail.com",
+      to_email: "admin@builtwareai.info",
       reply_to: formData.email,
     };
 
@@ -82,12 +80,6 @@ const Contact = () => {
     } finally {
       setIsSending(false);
     }
-
-    // 2. WhatsApp Redirection (always fires regardless of email status)
-    const waMessage = `*🚀 New Lead - Builtware AI*\n\n*👤 Contact Details*\n*Name:* ${formData.name}\n*Email:* ${formData.email}\n*Company:* ${formData.company}\n*Phone:* ${formData.phone}\n\n*💬 Message*\n${formData.message}\n\n_Sent from Builtware AI Portfolio_`;
-    const encodedWaMessage = encodeURIComponent(waMessage);
-    const waUrl = `https://wa.me/${waNumber}?text=${encodedWaMessage}`;
-    window.open(waUrl, "_blank");
 
     setSubmitted(true);
     setTimeout(() => {
@@ -183,7 +175,7 @@ const Contact = () => {
                 {
                   icon: <HiOutlineMail size={20} />,
                   label: "Email",
-                  value: "admin@builtwareai.info",
+                  value: "admin@builtware.info",
                 },
                 {
                   icon: <HiOutlinePhone size={20} />,

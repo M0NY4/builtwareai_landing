@@ -114,20 +114,21 @@ const Solutions = () => {
   const closeModal = () => setSelectedSolution(null);
 
   return (
-    <SectionWrapper id="solutions">
-      <SectionHeading
-        label="Featured Solutions"
-        title="Purpose-Built Products That Deliver"
-        subtitle="Explore our flagship solutions designed to solve real-world business challenges with precision and efficiency."
-      />
-      
+    <>
       <SolutionModal 
         isOpen={selectedSolution !== null} 
         onClose={closeModal} 
         data={selectedSolution} 
       />
-
-      <motion.div
+      
+      <SectionWrapper id="solutions">
+        <SectionHeading
+          label="Featured Solutions"
+          title="Purpose-Built Products That Deliver"
+          subtitle="Explore our flagship solutions designed to solve real-world business challenges with precision and efficiency."
+        />
+        
+        <motion.div
         variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
@@ -208,6 +209,7 @@ const Solutions = () => {
         ))}
       </motion.div>
     </SectionWrapper>
+    </>
   );
 };
 

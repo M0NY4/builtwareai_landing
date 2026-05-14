@@ -95,19 +95,20 @@ const Services = () => {
   const closeModal = () => setSelectedService(null);
 
   return (
-    <SectionWrapper id="services">
-      <SectionHeading
-        label="Our Services"
-        title="End-to-End Software Solutions"
-        subtitle="From ideation to deployment, we deliver comprehensive technology services that transform your business operations."
-      />
-
+    <>
       {/* The new modal component */}
       <ServiceModal 
         isOpen={selectedService !== null} 
         onClose={closeModal} 
         data={selectedService} 
       />
+
+      <SectionWrapper id="services">
+        <SectionHeading
+          label="Our Services"
+          title="End-to-End Software Solutions"
+          subtitle="From ideation to deployment, we deliver comprehensive technology services that transform your business operations."
+        />
 
       <motion.div
         variants={staggerContainer}
@@ -156,6 +157,7 @@ const Services = () => {
         ))}
       </motion.div>
     </SectionWrapper>
+    </>
   );
 };
 
